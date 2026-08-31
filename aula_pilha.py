@@ -35,78 +35,105 @@ class PilhaEncadeada:
     def __len__(self):
         return self.size
 
-    def is_empty(self):
+    def esta_vazia(self):
         return self.size == 0
 
+    def __repr__(self):
+        dadi = []
+        current = self.head
+        while current:
+            values.append(str(current.value))
+            current = current.next
 
 class FilaEncadeada:
     entrada = PilhaEncadeada()
     saida = PilhaEncadeada()
 
     def enfileirar(self, item):
-        return entrada.push(item)
+        return self.entrada.push(item)
 
     def desenfileirar(self):
-        if self.entrada.is_empty() and self.saida.is_empty():
+        if self.entrada.esta_vazia() and self.saida.esta_vazia():
             raise "Fila Vazia"
-        if self.saida.is_empty() == False:
+        if self.saida.esta_vazia() == False:
             return self.saida.pop()
         else:
-            while self.entrada.is_empty() == False:
+            while self.entrada.esta_vazia() == False:
                 self.saida.push(self.entrada.pop())
                 return self.saida.pop()
     def frente(self):
-        if self.entrada.is_empty() and self.saida.is_empty():
+        if self.entrada.esta_vazia() and self.saida.esta_vazia():
             raise "Fila Vazia"
-        if self.saida.is_empty() == False:
+        if self.saida.esta_vazia() == False:
             return self.saida.head.value
         else:
-            while self.entrada.is_empty() == False:
+            while self.entrada.esta_vazia() == False:
                 self.saida.push(self.entrada.pop())
                 return self.saida.head.value
     
     def esta_vazia(self):
-        return self.entrada.is_empty() and self.saida.is_empty()
+        return self.entrada.esta_vazia() and self.saida.esta_vazia()
 
     
-
+    def __len__(self):
+        return self.entrada.size + self.saida.size
+    
+    def __repr__(self):
+        if self.entrada.is_empty() and self.saida.is_empty():
+            print("Fila Vazia")
+        while self.entrada.is_empty() == False:
+            self.saida.push(self.entrada.pop())
+            return f"{self.saida}"
 
 
 
 def main():
-    # Create a new stack
-    stack = PilhaEncadeada()
+    pilha = PilhaEncadeada()
 
-    # Push elements onto the stack
-    stack.push("A")
-    stack.push("B")
-    stack.push("C")
-    stack.push("D")
-    stack.push("E")
+    pilha.push("A")
+    pilha.push("B")
+    pilha.push("C")
+    pilha.push("D")
+    pilha.push("E")
 
-    # Check the size of the stack
-    print("Stack size:", stack.size)
+    print(pilha.__repr__())
+    print("Tamanho da Pilha:", pilha.size)
 
-    # Pop elements from the stack
-    print("Popped item:", stack.pop())
-    print("Popped item:", stack.pop())
+    print(f"Remove elemento o elemento {pilha.pop()} da pilha")
+    print(f"Remove elemento o elemento {pilha.pop()} da pilha")
 
-    # Check if the stack is empty
-    if stack.is_empty():
-        print("Stack is empty")
+    if pilha.esta_vazia():
+        print("Pilha está vazia")
     else:
-        print("Stack is not empty")
+        print("Pilha não está vazia")
 
-    # Check the size of the stack again
-    print("Stack size:", stack.size)
+    print("Tamanho da Pilha:", pilha.size)
 
-    # Pop elements from the stack
-    print("Popped item:", stack.pop())
-    # print("Popped item:", stack.pop())
+    print(f"Remove elemento o elemento {pilha.pop()} da pilha")
+
+def main_2():
+    fila = FilaEncadeada()
+
+    fila.enfileirar("A")
+    fila.enfileirar("B")
+    fila.enfileirar("C")
+    fila.enfileirar("D")
+    fila.enfileirar("E")
+
+    print("Tamanho da Fila:", fila.__len__())
+
+    print(f"Remove elemento o elemento {fila.desenfileirar()} da fila")
+    print(f"Remove elemento o elemento {fila.desenfileirar()} da fila")
+
+    if fila.esta_vazia():
+        print("Fila está vazia")
+    else:
+        print("Fila não está vazia")
 
 
 if __name__ == "__main__":
     main()
+    main_2()
 
 
 
