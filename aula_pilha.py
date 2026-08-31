@@ -55,6 +55,22 @@ class FilaEncadeada:
             while self.entrada.is_empty() == False:
                 self.saida.push(self.entrada.pop())
                 return self.saida.pop()
+    def frente(self):
+        if self.entrada.is_empty() and self.saida.is_empty():
+            raise "Fila Vazia"
+        if self.saida.is_empty() == False:
+            return self.saida.head.value
+        else:
+            while self.entrada.is_empty() == False:
+                self.saida.push(self.entrada.pop())
+                return self.saida.head.value
+    
+    def esta_vazia(self):
+        return self.entrada.is_empty() and self.saida.is_empty()
+
+    
+
+
 
 
 def main():
