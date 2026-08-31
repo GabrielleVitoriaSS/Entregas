@@ -46,10 +46,15 @@ class FilaEncadeada:
     def enfileirar(self, item):
         return entrada.push(item)
 
-    def desenfileirar
-    
-
-
+    def desenfileirar(self):
+        if self.entrada.is_empty() and self.saida.is_empty():
+            raise "Fila Vazia"
+        if self.saida.is_empty() == False:
+            return self.saida.pop()
+        else:
+            while self.entrada.is_empty() == False:
+                self.saida.push(self.entrada.pop())
+                return self.saida.pop()
 
 
 def main():
