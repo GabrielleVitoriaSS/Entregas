@@ -24,9 +24,14 @@ class PilhaEncadeada:
 
     def pop(self):
         if self.size == 0:
-            raise "Lista Vazia"
+            raise IndexError("Lista Vazia")
         self._size -= 1
         return self._my_list.pop()
+
+    def topo(self):
+        if self.size == 0:
+            raise IndexError("Lista Vazia")
+        return self._my_list.head.value
 
     @property
     def size(self):
@@ -39,11 +44,12 @@ class PilhaEncadeada:
         return self.size == 0
 
     def __repr__(self):
-        dadi = []
-        current = self.head
+        values = []
+        current = self._my_list.head
         while current:
             values.append(str(current.value))
             current = current.next
+        return f"Pilha Encadeada: [{', '.join(values)}]"
 
 class FilaEncadeada:
     entrada = PilhaEncadeada()
