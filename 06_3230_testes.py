@@ -1,4 +1,10 @@
-import 06_3230_pilha_encadeada as PE 
+# python
+
+import lista_encadeada as myList
+import importlib
+
+PE = importlib.import_module("06_3230_pilha_encadeada")
+FE = importlib.import_module("06_3230_fila_encadeada")
 
 def main():
     pilha = PE.PilhaEncadeada()
@@ -25,13 +31,15 @@ def main():
     print(f"Remove elemento o elemento {pilha.pop()} da pilha")
 
 def main_2():
-    fila = PE.FilaEncadeada()
+    fila = FE.FilaEncadeada()
 
     fila.enfileirar("A")
     fila.enfileirar("B")
     fila.enfileirar("C")
     fila.enfileirar("D")
     fila.enfileirar("E")
+
+    print(fila.__repr__())
 
     print("Tamanho da Fila:", fila.__len__())
 
@@ -43,13 +51,10 @@ def main_2():
     else:
         print("Fila não está vazia")
 
+    print(fila.__repr__())
+
 
 if __name__ == "__main__":
     main()
     main_2()
-
-
-
-
-
 
