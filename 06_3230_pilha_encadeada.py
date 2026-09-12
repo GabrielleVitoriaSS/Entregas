@@ -1,6 +1,9 @@
 # python
 
 import lista_encadeada as myList
+import importlib
+
+PE = importlib.import_module("06_3230_pilha_encadeada")
 
 class ListaPilha(myList.LinkedList):
     def insert(self, data):

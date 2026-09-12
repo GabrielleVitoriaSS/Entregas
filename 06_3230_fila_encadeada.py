@@ -2,6 +2,7 @@
 
 import lista_encadeada as myList
 
+
 class ListaPilha(myList.LinkedList):
     def insert(self, data):
         node = myList.Node(data)
@@ -60,22 +61,22 @@ class FilaEncadeada:
 
     def desenfileirar(self):
         if self.entrada.esta_vazia() and self.saida.esta_vazia():
-            raise "Fila Vazia"
+            raise IndexError("Fila Vazia")
         if self.saida.esta_vazia() == False:
             return self.saida.pop()
         else:
             while self.entrada.esta_vazia() == False:
                 self.saida.push(self.entrada.pop())
-                return self.saida.pop()
+            return self.saida.pop()
     def frente(self):
         if self.entrada.esta_vazia() and self.saida.esta_vazia():
-            raise "Fila Vazia"
+            raise IndexError("Fila Vazia")
         if self.saida.esta_vazia() == False:
             return self.saida.head.value
         else:
             while self.entrada.esta_vazia() == False:
                 self.saida.push(self.entrada.pop())
-                return self.saida.head.value
+            return self.saida.head.value
     
     def esta_vazia(self):
         return self.entrada.esta_vazia() and self.saida.esta_vazia()
@@ -85,13 +86,30 @@ class FilaEncadeada:
         return self.entrada.size + self.saida.size
     
     def __repr__(self):
-        if self.entrada.is_empty() and self.saida.is_empty():
-            print("Fila Vazia")
-        while self.entrada.is_empty() == False:
-            self.saida.push(self.entrada.pop())
-            return f"{self.saida}"
+        if self.entrada.esta_vazia() and self.saida.esta_vazia():
+            return "Fila Vazia"
+        fila = []
 
+        temp_saida = PilhaEncadeada()
+        temp_entrada = PilhaEncadeada()
+        
+        while self.saida.esta_vazia() == False:
+            elem = self.saida.pop()
+            fila.append(str(elem))
+            temp_saida.push(elem)
 
+        while temp_saida.esta_vazia() == False:
+            self.saida.push(temp_saida.pop())
+
+        while self.entrada.esta_vazia() == False:
+            temp_entrada.push(self.entrada.pop())
+
+        while temp_entrada.esta_vazia() == False:
+            elem = temp_entrada.pop()
+            fila.append(str(elem))
+            self.entrada.push(elem)
+            
+        return f"Fila Encadeada: [{', '.join(fila)}]"
 
 def main():
     pilha = PilhaEncadeada()
@@ -126,6 +144,8 @@ def main_2():
     fila.enfileirar("D")
     fila.enfileirar("E")
 
+    print(fila.__repr__())
+
     print("Tamanho da Fila:", fila.__len__())
 
     print(f"Remove elemento o elemento {fila.desenfileirar()} da fila")
@@ -135,6 +155,8 @@ def main_2():
         print("Fila está vazia")
     else:
         print("Fila não está vazia")
+
+    print(fila.__repr__())
 
 
 if __name__ == "__main__":
