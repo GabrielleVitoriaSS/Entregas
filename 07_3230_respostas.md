@@ -1,0 +1,1 @@
+Foi utilizado um algoritmo de Busca em Profundidade porque o labirinto é perfeito e só existe um caminho até o queijo. Então a Busca por Largura seria equivalente e os conceitos de profundidade foram melhor compreendidos por mim. 
