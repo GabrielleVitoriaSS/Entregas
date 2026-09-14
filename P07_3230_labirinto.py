@@ -106,8 +106,8 @@ if __name__ == '__main__':
     m, n = 10, 14  # Grid size
     random.seed(10110)
     maze = generate_maze(m, n)
-    maze = labirinto(maze, m, n)
-    print_maze(maze)
+    labirinto_maze = labirinto(maze, m, n)
+    print_maze(labirinto_maze)
 
 
 
