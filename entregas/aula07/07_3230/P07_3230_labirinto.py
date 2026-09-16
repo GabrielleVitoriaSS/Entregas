@@ -1,4 +1,6 @@
-
+'''
+Declaro que usei IA (Modelo: Google Gemini) para tutoria em algumas construcoes no codigo.
+'''
 import random
 
 
